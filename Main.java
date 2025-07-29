@@ -29,14 +29,17 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Boolean loop = true;
 
+        displayMenu();
         // Main Console Menu Loop
         while (loop == true) {
-            displayMenu();
+
             System.out.print("Choose: ");
             String choice = input.nextLine();
+
             switch (choice.toLowerCase()) {
             case "exit":
                 loop = false;
+                displayMenu();
                 System.out.println("Exiting Expense Tracker. Goodbye!");
                 break;
             case "menu":
@@ -44,22 +47,24 @@ public class Main {
                 break;
             default:
                 try {
-                    int menuChoice = Integer.parseInt(choice);
-                    switch (menuChoice) {
-                    case 1:
-                        loop = false;
-                        System.out.println("Test complete. Goodbye!");
-                        break;
-                    case 2:
+                    switch (Integer.parseInt(choice)) {
+                        case 1:
+                            loop = false;
+                            displayMenu();
+                            System.out.println("Test complete. Goodbye!");
+                            break;
+                        case 2:
+                            displayMenu();
+                            break;
+                        default:
+                            loop = false;
+                            System.out.println("Error: Enter valid number!");
+                            break;
+                        }
+                    } catch (NumberFormatException e) {
                         displayMenu();
-                        break;
-                    default:
-                        loop = false;
-                        System.out.println("Error: Enter valid number!");
+                        System.out.println("Error: test complete");
                     }
-                } catch (InputMismatchException e) {
-                    e.printStackTrace();
-                }
             }
         }
     }
