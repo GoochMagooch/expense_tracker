@@ -49,22 +49,28 @@ public class Main {
                 try {
                     switch (Integer.parseInt(choice)) {
                         case 1:
+                            // Manage Expenses Console
                             loop = false;
                             displayMenu();
                             System.out.println("Test complete. Goodbye!");
                             break;
                         case 2:
+                            // View Expenses
                             displayMenu();
+                            break;
+                        case 3:
+                            // Calculate Expenses
                             break;
                         default:
                             loop = false;
+                            displayMenu();
                             System.out.println("Error: Enter valid number!");
                             break;
                         }
-                    } catch (NumberFormatException e) {
-                        displayMenu();
-                        System.out.println("Error: test complete");
-                    }
+                } catch (NumberFormatException e) {
+                    displayMenu();
+                    System.out.println("Error: test complete");
+                }
             }
         }
     }
