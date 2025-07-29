@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -34,16 +35,31 @@ public class Main {
             System.out.print("Choose: ");
             String choice = input.nextLine();
             switch (choice.toLowerCase()) {
-                case "exit":
-                    loop = false;
-                    System.out.println("Exiting Expense Tracker. Goodbye!");
-                    break;
-                case "menu":
-                    displayMenu();
-                    break;
-                default:
-                    System.out.println("Loop successfully broken!");
-                    break;
+            case "exit":
+                loop = false;
+                System.out.println("Exiting Expense Tracker. Goodbye!");
+                break;
+            case "menu":
+                displayMenu();
+                break;
+            default:
+                try {
+                    int menuChoice = Integer.parseInt(choice);
+                    switch (menuChoice) {
+                    case 1:
+                        loop = false;
+                        System.out.println("Test complete. Goodbye!");
+                        break;
+                    case 2:
+                        displayMenu();
+                        break;
+                    default:
+                        loop = false;
+                        System.out.println("Error: Enter valid number!");
+                    }
+                } catch (InputMismatchException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
