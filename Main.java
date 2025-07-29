@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
 
@@ -23,7 +24,18 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
         // Main Expense Tracker Console Menu Functionality
-        displayMenu();
+        while (true) {
+            displayMenu();
+            System.out.print("Choose: ");
+            String choice = input.nextLine();
+            if (choice.equals("exit")) {
+                break;
+            } else if (choice.equals("repeat")) {
+                clearTerm();
+            }
+        }
     }
 }
