@@ -15,6 +15,7 @@ public class Main {
 
     // Method 2: Display Expense Tracker Console Menu
     public static void displayMenu() {
+        clearTerm();
         System.out.println("Welcome To The Simple Expense Tracker!\n");
         System.out.println("1. Manage Expenses");
         System.out.println("2. View Expenses");
@@ -25,16 +26,24 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        Boolean loop = true;
 
-        // Main Expense Tracker Console Menu Functionality
-        while (true) {
+        // Main Console Menu Loop
+        while (loop == true) {
             displayMenu();
             System.out.print("Choose: ");
             String choice = input.nextLine();
-            if (choice.equals("exit")) {
-                break;
-            } else if (choice.equals("repeat")) {
-                clearTerm();
+            switch (choice.toLowerCase()) {
+                case "exit":
+                    loop = false;
+                    System.out.println("Exiting Expense Tracker. Goodbye!");
+                    break;
+                case "menu":
+                    displayMenu();
+                    break;
+                default:
+                    System.out.println("Loop successfully broken!");
+                    break;
             }
         }
     }
